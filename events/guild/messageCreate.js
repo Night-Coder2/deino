@@ -6,5 +6,5 @@ module.exports = (Discord, client, message) => {
   const cmd = args.shift().toLowerCase();
   const command = client.commands.get(cmd);
 
-  if(command && message.member.roles.cache.has('1088787144077746238')) command.execute(client, message, args, Discord)
+  if(command) command.execute(client, message, args, Discord)
 }

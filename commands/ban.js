@@ -2,7 +2,7 @@ module.exports = {
   name: 'ban',
   description: "This command bans a member!",
   execute(client, message, args, Discord) {
-    if(message.member.permissions(Discord.PermissionsBitField.Flags.BanMembers || Discord.PermissionsBitField.Flags.Administrator)){
+    if(message.member.permissions.has(Discord.PermissionsBitField.Flags.BanMembers || Discord.PermissionsBitField.Flags.Administrator)){
       const target = message.mentions.users.first();
       if (target) {
           const memberTarget = message.guild.members.cache.get(target.id);
