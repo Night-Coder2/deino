@@ -22,6 +22,8 @@ client.commands = new Discord.Collection();
   require(`./handlers/${handler}.js`)(client, Discord);
 })
 
+client.commands
+
 client.login(TOKEN);
 app.listen(3000, () => {
   console.log('server started');
