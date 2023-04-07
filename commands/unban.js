@@ -1,7 +1,7 @@
 module.exports = {
   name: 'unban',
   description: "This command unban a member!",
-  async execute(client, message, args, Discord) {
+  async execute(message, args, cmd, client, Discord) {
     if(message.member.permissions.has(Discord.PermissionsBitField.Flags.BanMembers || Discord.PermissionsBitField.Flags.Administrator)){
     const [_, userID] = message.content.split(' ');
     const reason ='idk'
