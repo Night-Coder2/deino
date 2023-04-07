@@ -1,14 +1,21 @@
 module.exports = {
   name: 'unban',
   description: "This command unban a member!",
-  execute(client, message, args, Discord) {
-    const target = message.mentions.users.first();
-    if (target) {
-      const memberTarget = message.guild.members.cache.get(target.id);
-      memberTarget.unban();
-      message.channel.send("User has been unbanned");
+  async execute(client, message, args, Discord) {
+    if(message.member.permissions.has(Discord.PermissionsBitField.Flags.BanMembers || Discord.PermissionsBitField.Flags.Administrator)){
+    const [_, userID] = message.content.split(' ');
+    const reason ='idk'
+    await message.guild.bans.fetch()
+      .then(async bans => {
+        if (bans.size == 0) return await message.reply('nobody were banned from this server')
+        let bannedID = await bans.find(ban => ban.user.id == userID);
+        if(!bannedID) return await message.reply('ID specified wasnt banned from this server')
+        if(await message.guild.bans.remove(userID, reason).catch(err => console.error(err))){
+          message.reply('user successfully unbanned')
+        }
+      }).catch(err => console.error(err))
     } else {
-      message.channel.send(`You coudn't unban that member!`);
+      message.reply('you dont have the permissions to unban people')
     }
-  }
+  },
 }
