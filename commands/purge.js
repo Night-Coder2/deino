@@ -1,7 +1,7 @@
 module.exports = {
   name: 'purge',
   description: "This is used to delete message.",
-  async execute(client, message, args, Discord) {
+  async execute(message, args, cmd, client, Discord) {
     if(message.member.permissions.has(Discord.PermissionsBitField.Flags.ManageMessages || Discord.PermissionsBitField.Flags.Administrator)){
       if(!args[0]) return message.reply("Please enter the number of messages you want to delete.");
       if(isNaN(args[0])) return message.reply("Please enter a real number!");

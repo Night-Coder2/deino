@@ -1,7 +1,7 @@
 module.exports = {
   name: 'unban',
   description: "This command unban a member!",
-  execute(client, message, args, Discord) {
+  execute(message, args, cmd, client, Discord) {
     const target = message.mentions.users.first();
     if (target) {
       const memberTarget = message.guild.members.cache.get(target.id);

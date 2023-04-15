@@ -7,8 +7,8 @@ const client = new Discord.Client({
     Discord.GatewayIntentBits.Guilds,
     Discord.GatewayIntentBits.GuildMessages,
     Discord.GatewayIntentBits.MessageContent,
-  ],
-  partials: ["MESSAGE", "CHANNEL", "REACTION"]
+    Discord.GatewayIntentBits.GuildMembers
+  ]
 })
 
 app.get('/', (req, res) => {
@@ -21,6 +21,8 @@ client.events = new Discord.Collection();
 ['command_handler', 'event_handler'].forEach(handler => {
   require(`./handlers/${handler}.js`)(client, Discord);
 })
+
+client.commands
 
 client.login(TOKEN);
 app.listen(3000, () => {

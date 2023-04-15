@@ -2,7 +2,7 @@ const ms = require('ms');
 module.exports = {
   name: 'mute',
   description: "This mutes a member",
-  execute(client, message, args, Discord) {
+  execute(message, args, cmd, client, Discord) {
     if(message.member.permissions.has(Discord.PermissionsBitField.Flags.ModerateMembers || Discord.PermissionsBitField.Flags.Administrator)){
       const target = message.mentions.users.first();
       if (target) {
