@@ -1,4 +1,5 @@
-const TOKEN = process.env['TOKEN']
+require('dotenv/config')
+const TOKEN = process.env.TOKEN
 const Discord = require('discord.js');
 const express = require('express')
 const app = express();
@@ -22,7 +23,7 @@ client.commands = new Discord.Collection();
   require(`./handlers/${handler}.js`)(client, Discord);
 })
 
-client.commands
+client.guilds.cache.get().
 
 client.login(TOKEN);
 app.listen(3000, () => {
