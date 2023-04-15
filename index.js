@@ -23,8 +23,6 @@ client.events = new Discord.Collection();
   require(`./handlers/${handler}.js`)(client, Discord);
 })
 
-client.guilds.cache.get().
-
 client.login(TOKEN);
 app.listen(3000, () => {
   console.log('server started');
