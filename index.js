@@ -8,8 +8,8 @@ const client = new Discord.Client({
     Discord.GatewayIntentBits.Guilds,
     Discord.GatewayIntentBits.GuildMessages,
     Discord.GatewayIntentBits.MessageContent,
-  ],
-  partials: ["MESSAGE", "CHANNEL", "REACTION"]
+    Discord.GatewayIntentBits.GuildMembers
+  ]
 })
 
 app.get('/', (req, res) => {
@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 });
 
 client.commands = new Discord.Collection();
-client.commands = new Discord.Collection();
+client.events = new Discord.Collection();
 
 ['command_handler', 'event_handler'].forEach(handler => {
   require(`./handlers/${handler}.js`)(client, Discord);
