@@ -16,13 +16,11 @@ app.get('/', (req, res) => {
 });
 
 client.commands = new Discord.Collection();
-client.commands = new Discord.Collection();
+client.events = new Discord.Collection();
 
 ['command_handler', 'event_handler'].forEach(handler => {
   require(`./handlers/${handler}.js`)(client, Discord);
 })
-
-client.commands
 
 client.login(TOKEN);
 app.listen(3000, () => {
