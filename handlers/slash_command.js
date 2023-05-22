@@ -7,7 +7,11 @@ module.exports = (client, Discord) => {
         for (let file of commands) {
             let pull = require(`../slash_commands/${dir}/${file}`);
 
-            client.slash_commands.set(pull.data.name, pull);
+            if(pull.data){
+                client.slash_commands.set(pull.data.name, pull);
+            } else {
+                continue;
+            }
         
             if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach(alias => client.aliases.set(alias, pull.name));
         }

@@ -13,10 +13,13 @@ const client = new Discord.Client({
   ]
 })
 
+client.on('interactionCreate', async interaction => {
+interaction.m
+})
+
 client.prefix_commands = new Collection();
 client.slash_commands = new Collection();
 client.aliases = new Collection();
-
 for(let handler of  ["slash_command", "prefix_command", "event"]) require(`./handlers/${handler}`)(client, Discord);
 client.login(TOKEN);
 app.listen(3000, () => {
