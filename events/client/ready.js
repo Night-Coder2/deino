@@ -1,3 +1,3 @@
-module.exports = () => {
-  console.log('bot is ready')
-}
+module.exports = (Discord, client) => {
+    console.log('bot is ready')
+  }

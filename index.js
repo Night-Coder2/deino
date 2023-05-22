@@ -1,7 +1,8 @@
 require('dotenv/config')
 const TOKEN = process.env.TOKEN
 const Discord = require('discord.js');
-const express = require('express')
+const express = require('express');
+const { Collection } = require('discord.js');
 const app = express();
 const client = new Discord.Client({
   intents: [
@@ -12,17 +13,11 @@ const client = new Discord.Client({
   ]
 })
 
-app.get('/', (req, res) => {
-  res.send('Hello Express app!')
-});
+client.prefix_commands = new Collection();
+client.slash_commands = new Collection();
+client.aliases = new Collection();
 
-client.commands = new Discord.Collection();
-client.events = new Discord.Collection();
-
-['command_handler', 'event_handler'].forEach(handler => {
-  require(`./handlers/${handler}.js`)(client, Discord);
-})
-
+for(let handler of  ["slash_command", "prefix_command", "event"]) require(`./handlers/${handler}`)(client, Discord);
 client.login(TOKEN);
 app.listen(3000, () => {
   console.log('server started');
