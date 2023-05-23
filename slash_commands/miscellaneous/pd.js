@@ -66,7 +66,7 @@ module.exports = {
                         }
 
                         // Send message with the embed
-                        interaction.channel.send({ embeds: [embed] });
+                        interaction.followUp({ embeds: [embed] });
                     })
                     .catch((error) => {
                         interaction.reply('Failed to fetch Pokémon data');

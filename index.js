@@ -11,11 +11,7 @@ const client = new Discord.Client({
     Discord.GatewayIntentBits.MessageContent,
     Discord.GatewayIntentBits.GuildMembers
   ]
-})
-
-client.on('interactionCreate', async interaction => {
-interaction.m
-})
+});
 
 client.prefix_commands = new Collection();
 client.slash_commands = new Collection();
