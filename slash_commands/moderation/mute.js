@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, MessageEmbed } = require('discord.js');
 const Discord = require('discord.js');
 const ms = require('ms');
 module.exports = {
@@ -17,24 +17,25 @@ module.exports = {
         if(target.roles.cache.has(role.id)) return interaction.followUp({ content: 'This member is already muted.', ephemeral: true });
         await target.roles.add(role.id);
         await target.roles.remove(members.id);
-        const embed = new Discord.MessageEmbed()
+        const embed = new EmbedBuilder()
         .setTitle('Member Muted')
         .setDescription(`**${target.user.tag}** has been muted for ${ms(ms(time))}.`)
-        .setColor('GREEN')
-        .setFooter('Mute Member')
+        .setColor('00ff00')
         .setTimestamp();
         interaction.followUp({ embeds: [ embed ]});
         setTimeout(async () => {
+          if(!target.roles.cache.has(role.id)) return;
             await target.roles.remove(role.id);
             await target.roles.add(members.id);
-            const embed = new Discord.MessageEmbed()
+            const embed = new EmbedBuilder()
             .setTitle('Member Unmuted')
             .setDescription(`**${target.user.tag}** has been unmuted.`)
-            .setColor('GREEN')
-            .setFooter('Unmute Member')
+            .setColor('00ff00')
             .setTimestamp();
             interaction.followUp({ embeds: [ embed ]});
         }, ms(time));
+    } else {
+      await interaction.channel.send('You do not have permission to use this command.')
     }
   }
 }

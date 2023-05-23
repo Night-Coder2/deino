@@ -1,6 +1,6 @@
 const ms = require('ms');
 module.exports = {
-    name: 'mute',
+    name: 'pd',
     description: "This mutes a member",
     async execute(message, args, cmd, client, Discord) {
         const pokemonName = args[0];
