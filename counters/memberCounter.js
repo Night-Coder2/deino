@@ -1,5 +1,5 @@
 module.exports = async (client) =>{
-    const guild = client.guilds.cache.get('716316807912226837');
+    const guild = client.guilds.cache.get('1094146202632720504');
     setInterval(() =>{
         const memberCount = guild.memberCount;
         const channel = guild.channels.cache.get('1102252424728682626');
