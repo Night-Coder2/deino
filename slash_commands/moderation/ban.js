@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, MessageEmbed, PermissionsBitField } = require("discord.js")
+const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField } = require("discord.js")
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -22,7 +22,7 @@ module.exports = {
         if(interaction.member.roles.highest.position <= member.roles.highest.position) 
         return interaction.followUp('Given member have higher or equal rank as you so i can not ban them.')
         
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
         .setDescription(`**${member.user.tag}** is banned from the server for \`${reason}\``)
         .setColor("GREEN")
         .setFooter("Ban Member")
