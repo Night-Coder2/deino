@@ -1,3 +1,4 @@
 module.exports = (Discord, client) => {
-    console.log('bot is ready')
-  }
+  require('../../counters/memberCounter')(client)
+  console.log('bot is ready')
+}
