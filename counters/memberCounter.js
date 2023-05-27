@@ -6,5 +6,6 @@ module.exports = async (Discord, client, app = app) =>{
         const memberCount = guild.memberCount;
         const channel = guild.channels.cache.get('1102252424728682626');
         channel.setName(`Total Members: ${memberCount.toLocaleString()}`);
+        app.get('/api/membercount', (req, res) => res.json({ memberCount: memberCount.toLocaleString() }))
     }, 5000);
 }
