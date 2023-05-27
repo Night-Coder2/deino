@@ -1,4 +1,4 @@
-module.exports = (Discord, client) => {
-  require('../../counters/memberCounter')(client)
+module.exports = (Discord, client, app) => {
+  require('../../counters/memberCounter')(Discord, client, app)
   console.log('bot is ready')
 }

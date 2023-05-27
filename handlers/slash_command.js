@@ -1,6 +1,6 @@
 const { readdirSync } = require("fs");
 
-module.exports = (client, Discord) => {
+module.exports = (client, Discord, app) => {
     readdirSync("./slash_commands").forEach(dir => {
         const commands = readdirSync(`./slash_commands/${dir}/`).filter(file => file.endsWith(".js"));
 

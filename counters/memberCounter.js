@@ -1,4 +1,6 @@
-module.exports = async (client) =>{
+const app = require('express')();
+
+module.exports = async (Discord, client, app = app) =>{
     const guild = client.guilds.cache.get('1094146202632720504');
     setInterval(() =>{
         const memberCount = guild.memberCount;

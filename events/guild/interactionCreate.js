@@ -1,6 +1,6 @@
 const { Events } = require("discord.js");
 
-module.exports = async (Discord, client, interaction) => {
+module.exports = async (Discord, client, app, interaction) => {
   if (!interaction.isCommand()) return;
   await interaction.deferReply().catch(err => {})
 
